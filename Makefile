@@ -5,7 +5,8 @@
 ## Makefile to compile malloc library
 ##
 
-SRC	=	my_malloc.c
+SRC	=	my_malloc.c	/
+		list.c
 
 OBJ	=	$(SRC:.c=.o)
 
