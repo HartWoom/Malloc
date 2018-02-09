@@ -34,6 +34,9 @@ void	*realloc(void *ptr, size_t size);
 void	*alloc_freed_block(size_t size, int page_size);
 void	*alloc_block(size_t size, int page_size);
 
+/* Tools functions for memory block */
+t_block	*get_struct_ptr(void *mem_member);
+
 /* Bonus Calloc */
 
 #endif
