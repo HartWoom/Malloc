@@ -52,7 +52,6 @@ void	*realloc(void *ptr, size_t size)
 		free(ptr);
 		return (NULL);
 	}
-	else 
 	/* si size == 0 ou ptr == NULL => malloc(block->size)
 	 + memcpy de ptr dans new_ptr */ 
 	//sinon malloc(block->size + size) + memcpy ptr dans new_ptr
