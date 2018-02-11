@@ -7,16 +7,18 @@
 
 #include "my_malloc.h"
 
-t_block	*get_struct_ptr(void *mem_member)
+extern list_t	allocated_list;
+
+block_t	*get_struct_ptr(void *mem_member)
 {
-	t_block	ref;
-	void	*member_ref = &ref.memory;
-	void	*block_ref = &ref;
-	long int	diff = member_ref - block_ref;
-	void	*result;
+	block_t	*ref = allocated_list.first;
 
 	if (mem_member == NULL)
 		return (NULL);
-	result = (void *) (mem_member) - diff;
-	return (result);
+	while (ref) {
+		if ((void *) (ref + 1) == mem_member)
+			return (ref);
+		ref = ref->next;
+	}
+	return (NULL);
 }

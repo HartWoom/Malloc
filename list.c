@@ -7,7 +7,7 @@
 
 #include "list.h"
 
-void	add_block_to_list(t_list *list, t_block *block)
+void	add_block_to_list(list_t *list, block_t *block)
 {
 	block->previous = list->last;
 	block->next = NULL;
@@ -21,7 +21,7 @@ void	add_block_to_list(t_list *list, t_block *block)
 	}
 }
 
-void	remove_block_to_list(t_list *list, t_block *block)
+void	remove_block_to_list(list_t *list, block_t *block)
 {
 	if (block == list->last && block == list->first) {
 		list->first = NULL;

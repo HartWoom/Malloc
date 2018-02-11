@@ -10,12 +10,9 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
+#include <pthread.h>
 #include "list.h"
-
-/* Globals lists for Malloc */
-
-t_list		allocated_list;
-t_list		freed_list;
 
 /* Memory allocation */
 
@@ -31,12 +28,15 @@ void	*realloc(void *ptr, size_t size);
 
 /* Basic allocation function */
 
-void	*alloc_freed_block(size_t size, int page_size);
+void	*alloc_freed_block(size_t size);
 void	*alloc_block(size_t size, int page_size);
 
 /* Tools functions for memory block */
-t_block	*get_struct_ptr(void *mem_member);
+
+block_t	*get_struct_ptr(void *mem_member);
 
 /* Bonus Calloc */
+
+void	*calloc(size_t, size_t);
 
 #endif
