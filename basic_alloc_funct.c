@@ -37,5 +37,5 @@ void	*alloc_block(size_t size, int page_size)
 		return (NULL);
 	elem->size = page_size * (nb_block + 1);
 	add_block_to_list(&allocated_list, elem);
-	return (void *) (elem + 1);
+	return ((void *) (elem + 1));
 }

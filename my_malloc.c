@@ -11,7 +11,9 @@ list_t	allocated_list;
 list_t	freed_list;
 pthread_mutex_t	my_malloc_lock;
 
-/* To malloc we first try to alloc a freed block, else we do a simple alloc */
+/*
+** To malloc we first try to alloc a freed block, else we do a simple alloc
+*/
 
 void	*malloc(size_t size)
 {
@@ -32,7 +34,8 @@ void	*malloc(size_t size)
 	return (memory);
 }
 
-/* If the block freed is the last one allocated
+/*
+** If the block freed is the last one allocated
 ** we give back memory to the system
 */
 
@@ -41,13 +44,12 @@ void	free(void *ptr)
 	block_t	*elem = get_struct_ptr(ptr);
 
 	if (elem == NULL)
-		return ;
+		return;
 	pthread_mutex_lock(&my_malloc_lock);
 	if (elem == allocated_list.last) {
 		remove_block_to_list(&allocated_list, elem);
 		sbrk(-elem->size);
-	}
-	else {
+	} else {
 		remove_block_to_list(&allocated_list, elem);
 		add_block_to_list(&freed_list, elem);
 	}
@@ -61,8 +63,7 @@ void	*realloc(void *ptr, size_t size)
 
 	if (ptr == NULL || size == 0) {
 		return (malloc(size));
-	}
-	else if (elem != NULL && elem->size >= size)
+	} else if (elem != NULL && elem->size >= size)
 		return ptr;
 	else if (elem != NULL){
 		new_ptr = malloc(size);

@@ -14,28 +14,40 @@
 #include <pthread.h>
 #include "list.h"
 
-/* Memory allocation */
+/*
+** Memory allocation
+*/
 
 void	*malloc(size_t size);
 
-/* Free memory */
+/*
+** Free memory
+*/
 
 void	free(void *ptr);
 
-/* Re alloc memory */
+/*
+** Re alloc memory
+*/
 
 void	*realloc(void *ptr, size_t size);
 
-/* Basic allocation function */
+/*
+** Basic allocation function
+*/
 
 void	*alloc_freed_block(size_t size);
 void	*alloc_block(size_t size, int page_size);
 
-/* Tools functions for memory block */
+/*
+** Tools functions for memory block
+*/
 
 block_t	*get_struct_ptr(void *mem_member);
 
-/* Bonus Calloc */
+/*
+** Bonus Calloc
+*/
 
 void	*calloc(size_t, size_t);
 
