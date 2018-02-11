@@ -33,7 +33,8 @@ void	*malloc(size_t size)
 }
 
 /* If the block freed is the last one allocated
-   we give back memory to the system */
+** we give back memory to the system
+*/
 
 void	free(void *ptr)
 {
@@ -72,4 +73,13 @@ void	*realloc(void *ptr, size_t size)
 
 void	*calloc(size_t nmemb, size_t size)
 {
+	void	*new_ptr;
+
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	new_ptr = malloc(nmemb * size);
+	if (new_ptr == NULL)
+		return (NULL);
+	memset(new_ptr, 0, nmemb * size);
+	return (new_ptr);
 }
